@@ -30,10 +30,10 @@ typedef enum _RANDOM_ALGORITHM {
 
 typedef enum _OPTIMIZATION_MODE {
     IMPL_AUTO_DETECT = -1,
-    IMPL_C = 0,
-    IMPL_SSE2,
-    IMPL_SSSE3,
-    IMPL_SSE4,
+    IMPL_C = 1,
+    IMPL_SSE2 = 0,
+    IMPL_SSSE3 = 0,
+    IMPL_SSE4 = 0,
 
     IMPL_COUNT
 } OPTIMIZATION_MODE;

@@ -13,16 +13,7 @@
 #include <intrin.h>
 #else
 
-void __cpuid(int CPUInfo[4], int InfoType) {
-    __asm__ __volatile__ (
-        "cpuid":
-        "=a" (CPUInfo[0]),
-        "=b" (CPUInfo[1]),
-        "=c" (CPUInfo[2]),
-        "=d" (CPUInfo[3]) :
-        "a" (InfoType)
-    );
-}
+
 
 #endif
 
@@ -244,17 +235,7 @@ static __inline int select_impl_index(int sample_mode, bool blur_first)
 static process_plane_impl_t get_process_plane_impl(int sample_mode, bool blur_first, int opt, int dither_algo)
 {
     if (opt == IMPL_AUTO_DETECT) {
-        int cpu_info[4] = {-1};
-        __cpuid(cpu_info, 1);
-        if (cpu_info[2] & 0x80000) {
-            opt = IMPL_SSE4;
-        } else if (cpu_info[2] & 0x200) {
-            opt = IMPL_SSSE3;
-        } else if (cpu_info[3] & 0x04000000) {
-            opt = IMPL_SSE2;
-        } else {
-            opt = IMPL_C;
-        }
+        opt = IMPL_C;
     }
     const process_plane_impl_t* impl_table = process_plane_impls[dither_algo][opt];
     return impl_table[select_impl_index(sample_mode, blur_first)];

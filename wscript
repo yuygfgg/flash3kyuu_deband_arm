@@ -183,9 +183,6 @@ def build(bld):
             bld(features="cxx " + feature,
                 use=[
                     "f3kdb-objs",
-                    "f3kdb-impl-sse2",
-                    "f3kdb-impl-ssse3",
-                    "f3kdb-impl-sse4",
                 ],
                 target="f3kdb",
                 install_path="${LIBDIR}")

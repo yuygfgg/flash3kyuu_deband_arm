@@ -29,9 +29,6 @@
     <ClInclude Include="..\src\impl_dispatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\flash3kyuu_deband_sse_base.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\sse_compat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
